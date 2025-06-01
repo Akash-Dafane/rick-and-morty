@@ -10,7 +10,7 @@ type CustomButtonProps = {
 
 const CustomButton: React.FC<CustomButtonProps> = ({ label, color, variant, ...props }) => {
   return (
-    <Button variant={variant} color={color} {...props}>
+    <Button variant={variant} color={color || 'primary'} {...props}>
       {label}
     </Button>
   )

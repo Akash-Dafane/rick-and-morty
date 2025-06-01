@@ -1,4 +1,5 @@
-import { Button, Box } from '@mui/material'
+import { Box } from '@mui/material'
+import { Button } from '../common'
 import { useNavigate } from '@tanstack/react-router'
 import { characterListRoute } from '../../routes/router'
 
@@ -10,6 +11,8 @@ export const PaginationControls = ({ page, hasNext }: { page: number; hasNext: b
       <Button
         variant="outlined"
         disabled={page === 1}
+        label="Previous"
+        color="primary"
         onClick={() =>
           navigate({
             to: characterListRoute.to,
@@ -19,13 +22,13 @@ export const PaginationControls = ({ page, hasNext }: { page: number; hasNext: b
             replace: true,
           })
         }
-      >
-        Previous
-      </Button>
+      />
 
       <Button
         variant="outlined"
         disabled={!hasNext}
+        label="Next"
+        color="primary"
         onClick={() =>
           navigate({
             to: characterListRoute.to,
@@ -35,9 +38,7 @@ export const PaginationControls = ({ page, hasNext }: { page: number; hasNext: b
             replace: true,
           })
         }
-      >
-        Next
-      </Button>
+      />
     </Box>
   )
 }

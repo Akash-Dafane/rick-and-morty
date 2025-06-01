@@ -38,12 +38,7 @@ export const CharacterTable = ({ characters }: CharacterTableProps) => {
         </TableHead>
         <TableBody>
           {characters.map(({ id, image, name, species }) => (
-            <TableRow
-              key={id}
-              hover
-              sx={{ cursor: 'pointer' }}
-              onClick={() => handleRowClick(id)}
-            >
+            <TableRow key={id} hover sx={{ cursor: 'pointer' }} onClick={() => handleRowClick(id)}>
               <TableCell>
                 <Avatar src={image} alt={name} />
               </TableCell>
@@ -56,4 +51,3 @@ export const CharacterTable = ({ characters }: CharacterTableProps) => {
     </TableContainer>
   )
 }
-
