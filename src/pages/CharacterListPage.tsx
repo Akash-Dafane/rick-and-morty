@@ -1,9 +1,5 @@
-const CharacterListPage = () => {
-  return (
-    <div>
-      <h1>CharacterListPage</h1>
-    </div>
-  )
-}
+import { CharacterList } from '../components/characterList/CharacterList'
 
-export default CharacterListPage
+export default function CharacterListPage() {
+  return <CharacterList />
+}

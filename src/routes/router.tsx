@@ -1,6 +1,6 @@
 import { createRootRoute, createRoute, Outlet, Router } from '@tanstack/react-router'
 import CharacterListPage from '../pages/CharacterListPage'
-import CharacterDetailPage  from '../pages/CharacterDetailPage'
+import CharacterDetailPage from '../pages/CharacterDetailPage'
 import { ROUTES } from './routesConfig'
 
 const rootRoute = createRootRoute({
