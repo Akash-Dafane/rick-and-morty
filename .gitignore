@@ -7,15 +7,33 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-node_modules
-dist
-dist-ssr
+# Runtime environment files
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Keep main .env file (used in your project)
+!.env
+
+# Dependency directories
+node_modules/
+
+# Build output
+dist/
+dist-ssr/
+build/
+
+# Local config files
 *.local
 
+# Prettier files (cache)
+.prettiercache
+
 # Editor directories and files
-.vscode/*
+.vscode/
 !.vscode/extensions.json
-.idea
+.idea/
 .DS_Store
 *.suo
 *.ntvs*
