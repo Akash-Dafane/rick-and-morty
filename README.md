@@ -15,23 +15,21 @@ A modern, responsive React application that lets users explore characters from t
 - 🧼 Linting and formatting via ESLint and Prettier
 - 🔐 Environment variable management
 
-
 ---
 
 ## 🚀 Tech Stack
 
-| Name               | Description                         |
-|--------------------|-------------------------------------|
-| React              | UI library                          |
-| TypeScript         | Static typing                       |
-| TanStack Router    | Client-side routing                 |
-| React Query        | Server state management             |
-| Material UI (MUI)  | UI components & design system       |
-| ESLint + Prettier  | Code linting and formatting         |
-| Vite               | Lightning-fast build tool           |
+| Name              | Description                   |
+| ----------------- | ----------------------------- |
+| React             | UI library                    |
+| TypeScript        | Static typing                 |
+| TanStack Router   | Client-side routing           |
+| React Query       | Server state management       |
+| Material UI (MUI) | UI components & design system |
+| ESLint + Prettier | Code linting and formatting   |
+| Vite              | Lightning-fast build tool     |
 
 ---
-
 
 ## 📁 Folder Structure
 
@@ -63,18 +61,22 @@ A modern, responsive React application that lets users explore characters from t
 
 ---
 
-
 ---
 
 ## 📦 Installation
 
-```bash
+````bash
 # Clone the repository
 git clone https://github.com/your-username/rick-and-morty-explorer.git
 cd rick-and-morty-explorer
 
 # Install dependencies
 npm install
+
+## 🔐 Environment Variables
+
+Create a `.env` file in the root of the project using the `.env.example` as a template:
+
 
 
 ## 🧪 Scripts
@@ -88,3 +90,4 @@ npm run format    # Formats code using Prettier
 
 👨‍💻 Author
 Akash Dafane
+````

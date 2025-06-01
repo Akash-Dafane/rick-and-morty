@@ -1,43 +1,55 @@
 import { Box } from '@mui/material'
 import { Button } from '../common'
-import { useNavigate } from '@tanstack/react-router'
-import { characterListRoute } from '../../routes/router'
+import type { Props } from '../../features/characters'
 
-export const PaginationControls = ({ page, hasNext }: { page: number; hasNext: boolean }) => {
-  const navigate = useNavigate()
+export const PaginationControls = ({ page, totalPages, onPageChange }: Props) => {
+  const windowSize = 5
+
+  const pagesToShow = Math.min(windowSize, totalPages)
+
+  let startPage = page - Math.floor(pagesToShow / 2)
+
+  if (startPage < 1) startPage = 1
+
+  if (startPage + pagesToShow - 1 > totalPages) {
+    startPage = totalPages - pagesToShow + 1
+    if (startPage < 1) startPage = 1
+  }
+
+  const pages = []
+  for (let i = 0; i < pagesToShow; i++) {
+    pages.push(startPage + i)
+  }
 
   return (
-    <Box mt={2} display="flex" justifyContent="center" gap={2}>
+    <Box mt={3} display="flex" gap={2} alignItems="center" justifyContent="center" flexWrap="wrap">
       <Button
-        variant="outlined"
-        disabled={page === 1}
-        label="Previous"
+        variant="contained"
         color="primary"
-        onClick={() =>
-          navigate({
-            to: characterListRoute.to,
-            search: (prev: { page?: number }) => ({
-              page: (prev.page ?? 1) - 1,
-            }),
-            replace: true,
-          })
-        }
+        label="Previous"
+        disabled={page <= 1}
+        onClick={() => onPageChange(page - 1)}
       />
 
+      {pages.length &&
+        pages.map((p) => (
+          <>
+            <Button
+              key={p}
+              variant={p === page ? 'contained' : 'outlined'}
+              color={p === page ? 'primary' : 'inherit'}
+              onClick={() => onPageChange(p)}
+              label={`${p}`}
+            />
+          </>
+        ))}
+
       <Button
-        variant="outlined"
-        disabled={!hasNext}
-        label="Next"
+        variant="contained"
+        disabled={page >= totalPages}
+        onClick={() => onPageChange(page + 1)}
         color="primary"
-        onClick={() =>
-          navigate({
-            to: characterListRoute.to,
-            search: (prev: { page?: number }) => ({
-              page: (prev.page ?? 1) + 1,
-            }),
-            replace: true,
-          })
-        }
+        label="Next"
       />
     </Box>
   )

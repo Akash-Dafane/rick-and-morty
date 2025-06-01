@@ -22,3 +22,9 @@ export interface CharacterResponse {
   }
   results: Character[]
 }
+
+export interface Props {
+  page: number
+  totalPages: number
+  onPageChange: (page: number) => void
+}

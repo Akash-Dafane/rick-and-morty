@@ -8,7 +8,7 @@ interface BackButtonProps {
 export function BackButton({ onClick }: BackButtonProps) {
   return (
     <Button
-      variant="outlined"
+      variant="contained"
       color="primary"
       label="Back to List"
       startIcon={<ArrowBackIcon />}
