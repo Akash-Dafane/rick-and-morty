@@ -1,5 +1,5 @@
 import type { CharacterResponse, Character } from './types'
-import { API_URL } from '../../config'
+import { API_URL } from '../../../config'
 
 export const fetchCharacters = async (page = 1): Promise<CharacterResponse> => {
   const res = await fetch(`${API_URL}/character?page=${page}`)
