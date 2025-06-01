@@ -1,54 +1,90 @@
-# React + TypeScript + Vite
+# Rick and Morty Explorer 🛸
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, responsive React application that lets users explore characters from the [Rick and Morty API](https://rickandmortyapi.com/). Built with TanStack Router, React Query, TypeScript, and Material UI.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## ✨ Features
 
-## Expanding the ESLint configuration
+- 🔍 Browse Rick and Morty characters with pagination
+- 📄 View detailed character profiles
+- ⚡ API state management with React Query
+- 🧭 Routing with TanStack Router
+- 🎨 Responsive UI with Material UI (MUI)
+- 🧪 Modular, scalable folder structure
+- 🧼 Linting and formatting via ESLint and Prettier
+- 🔐 Environment variable management
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+---
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🚀 Tech Stack
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+| Name               | Description                         |
+|--------------------|-------------------------------------|
+| React              | UI library                          |
+| TypeScript         | Static typing                       |
+| TanStack Router    | Client-side routing                 |
+| React Query        | Server state management             |
+| Material UI (MUI)  | UI components & design system       |
+| ESLint + Prettier  | Code linting and formatting         |
+| Vite               | Lightning-fast build tool           |
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+---
+
+
+## 📁 Folder Structure
+
+<pre lang="markdown"> src/
+├── components/
+│ ├── characterList/
+│ │ ├── CharacterList.tsx
+│ │ ├── CharacterTable.tsx
+│ │ ├── PaginationControls.tsx
+│ │ └── RefreshButton.tsx
+│ └── characterDetail/
+│ ├── CharacterDetailCard.tsx
+│ └── BackButton.tsx
+├── features/
+│ └── characters/
+│ ├── api.ts
+│ ├── types.ts
+│ └── hooks.ts
+├── pages/
+│ ├── CharacterListPage.tsx
+│ └── CharacterDetailPage.tsx
+├── routes/
+│ ├── router.ts
+│ └── routesConfig.ts
+├── config/
+│ └── index.ts
+├── App.tsx
+└── main.tsx </pre>
+
+---
+
+
+---
+
+## 📦 Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/your-username/rick-and-morty-explorer.git
+cd rick-and-morty-explorer
+
+# Install dependencies
+npm install
+
+
+## 🧪 Scripts
+
+```bash
+npm run dev       # Starts development server
+npm run build     # Builds for production
+npm run preview   # Serves the production build locally
+npm run lint      # Lints the project with ESLint
+npm run format    # Formats code using Prettier
+
+👨‍💻 Author
+Akash Dafane
