@@ -8,8 +8,8 @@ import {
   Avatar,
   Paper,
 } from '@mui/material'
-import { useNavigate } from '@tanstack/react-router'
-import { characterDetailRoute } from '../../routes/router'
+import { useNavigate, useSearch } from '@tanstack/react-router'
+import { characterDetailRoute, characterListRoute } from '../../routes/router'
 import type { Character } from '../../features/characters/types'
 
 type CharacterTableProps = {
@@ -19,10 +19,13 @@ type CharacterTableProps = {
 export const CharacterTable = ({ characters }: CharacterTableProps) => {
   const navigate = useNavigate()
 
+  const search = useSearch({ from: characterListRoute.id })
+
   const handleRowClick = (id: number) => {
     navigate({
       to: characterDetailRoute.to,
       params: { id: id.toString() },
+      search: { page: search.page ?? 1 },
     })
   }
 

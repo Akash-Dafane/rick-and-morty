@@ -1,12 +1,14 @@
-import { useParams, useNavigate } from '@tanstack/react-router'
+import { useParams, useNavigate, useSearch } from '@tanstack/react-router'
 import { CharacterDetailCard } from '../components/characterDetail/CharacterDetailCard'
 import { BackButton } from '../components/characterDetail/BackButton'
 import { Box, CircularProgress, Typography } from '@mui/material'
-import { characterListRoute } from '../routes/router'
+import { characterDetailRoute, characterListRoute } from '../routes/router'
 import { useCharacterDetailQuery } from '../features/characters'
 
 export function CharacterDetailPage() {
   const params = useParams({ strict: false })
+  const search = useSearch({ from: characterDetailRoute.id })
+  const page = search.page ?? 1
   const navigate = useNavigate()
 
   const idParam = params.id
@@ -31,7 +33,14 @@ export function CharacterDetailPage() {
 
   return (
     <Box p={3}>
-      <BackButton onClick={() => navigate({ to: characterListRoute.id })} />
+      <BackButton
+        onClick={() =>
+          navigate({
+            to: characterListRoute.to,
+            search: { page },
+          })
+        }
+      />
       <CharacterDetailCard character={character} />
     </Box>
   )
