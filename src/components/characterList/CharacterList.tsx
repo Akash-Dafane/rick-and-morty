@@ -2,7 +2,7 @@ import { Box, Typography, CircularProgress } from '@mui/material'
 import { useSearch, useNavigate } from '@tanstack/react-router'
 import { useQuery } from '@tanstack/react-query'
 import { fetchCharacters } from '../../features/characters/api'
-import { characterListRoute } from '../../routes/router'
+import { characterDetailRoute, characterListRoute } from '../../routes/router'
 import { CharacterTable } from './CharacterTable'
 import { PaginationControls } from './PaginationControls'
 import { RefreshButton } from './RefreshButton'
@@ -38,7 +38,16 @@ export const CharacterList = () => {
   return (
     <Box p={2}>
       <RefreshButton onClick={refetch} />
-      <CharacterTable characters={data?.results ?? []} />
+      <CharacterTable
+        characters={data?.results ?? []}
+        onRowClick={(character) =>
+          navigate({
+            to: characterDetailRoute.to,
+            params: { id: character.id.toString() },
+            search: { page }, 
+          })
+        }
+      />
       <PaginationControls
         page={page}
         totalPages={data?.info?.pages ?? 1}

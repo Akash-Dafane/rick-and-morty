@@ -1,56 +1,12 @@
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
-  Avatar,
-  Paper,
-} from '@mui/material'
-import { useNavigate, useSearch } from '@tanstack/react-router'
-import { characterDetailRoute, characterListRoute } from '../../routes/router'
+import { characterTableColumns } from './CharacterTableColumns'
+import { CustomDataTable } from '../common'
 import type { Character } from '../../features/characters/types'
 
-type CharacterTableProps = {
+interface CharacterTableProps {
   characters: Character[]
+  onRowClick?: (character: Character) => void
 }
 
-export const CharacterTable = ({ characters }: CharacterTableProps) => {
-  const navigate = useNavigate()
-
-  const search = useSearch({ from: characterListRoute.id })
-
-  const handleRowClick = (id: number) => {
-    navigate({
-      to: characterDetailRoute.to,
-      params: { id: id.toString() },
-      search: { page: search.page ?? 1 },
-    })
-  }
-
-  return (
-    <TableContainer component={Paper}>
-      <Table>
-        <TableHead>
-          <TableRow>
-            {['Image', 'Name', 'Species'].map((header) => (
-              <TableCell key={header}>{header}</TableCell>
-            ))}
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {characters.map(({ id, image, name, species }) => (
-            <TableRow key={id} hover sx={{ cursor: 'pointer' }} onClick={() => handleRowClick(id)}>
-              <TableCell>
-                <Avatar src={image} alt={name} />
-              </TableCell>
-              <TableCell>{name}</TableCell>
-              <TableCell>{species}</TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
-  )
+export function CharacterTable({ characters, onRowClick }: CharacterTableProps) {
+  return <CustomDataTable data={characters} columns={characterTableColumns} onRowClick={onRowClick} />
 }
